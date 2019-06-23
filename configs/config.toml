@@ -1,0 +1,10 @@
+# Gopher-cutter configuration
+
+title = "Gopher-cutter config"
+
+[server]
+port = ":8070"
+
+[database]
+url = "mongodb://127.0.0.1:27017"
+name = "gopher-cutter"
