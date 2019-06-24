@@ -5,6 +5,7 @@ jobs:
     docker:
       - image: alpine:3.7
     steps:
+      - checkout
       - run:
           name: My First Step
           command: |
