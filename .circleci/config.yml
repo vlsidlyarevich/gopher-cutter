@@ -9,3 +9,7 @@ jobs:
           name: My First Step
           command: |
             echo 'Hello CircleCi!'
+      - run:
+          name: Code check
+          command: |
+            ls -al
