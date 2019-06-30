@@ -2,8 +2,6 @@ package main
 
 import (
 	"context"
-	"github.com/vlsidlyarevich/gopher-cutter/internal/app/gopher-cutter/config"
-	"github.com/vlsidlyarevich/gopher-cutter/internal/app/gopher-cutter/server"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 	"log"
@@ -13,13 +11,13 @@ import (
 const path = "configs/config.toml"
 
 func main() {
-	c := config.NewConfig(path)
+	c := internal.NewConfig(path)
 	c.Read()
-	var s = server.NewServer(connectDb(c))
+	var s = internal.NewServer(connectDb(c))
 	log.Fatal(http.ListenAndServe(":8070", s.Router))
 }
 
-func connectDb(c *config.Config) (db *mongo.Database) {
+func connectDb(c *internal.Config) (db *mongo.Database) {
 	var err error
 	client, err := mongo.NewClient(options.Client().ApplyURI(c.Database.Url))
 	if err != nil {

@@ -2,8 +2,7 @@ package server
 
 import (
 	"github.com/gorilla/mux"
-	"github.com/vlsidlyarevich/gopher-cutter/internal/app/gopher-cutter/link"
-	"github.com/vlsidlyarevich/gopher-cutter/internal/app/gopher-cutter/util"
+	"github.com/vlsidlyarevich/gopher-cutter/internal"
 	"go.mongodb.org/mongo-driver/mongo"
 	"log"
 	"net/http"
@@ -12,12 +11,12 @@ import (
 type Server struct {
 	Db     *mongo.Database
 	Router *mux.Router
-	Dao    *link.DAO
+	Dao    *internal.DAO
 }
 
 func NewServer(db *mongo.Database) (s *Server) {
 	router := mux.NewRouter()
-	server := Server{db, router, link.NewLinkDAO(db)}
+	server := Server{db, router, internal.NewLinkDAO(db)}
 	server.routes()
 	return &server
 }
@@ -29,17 +28,17 @@ func (s *Server) CutURLEndpoint(w http.ResponseWriter, r *http.Request) {
 	if url == "" {
 		log.Panicf("Cannot cut empty string")
 	}
-	var result *link.Link
+	var result *internal.Link
 	result = s.Dao.FindByURL(url)
 	if result == nil {
-		var randId, e = util.NewRandom().RInt(10)
+		var randId, e = internal.NewRandom().RInt(10)
 		if e != nil {
 			log.Panic(e)
 		}
 
-		shortUrl := util.Encode(randId)
+		shortUrl := internal.Encode(randId)
 
-		result = s.Dao.Save(link.Link{
+		result = s.Dao.Save(internal.Link{
 			ShortURL: shortUrl,
 			URL:      url,
 		})
