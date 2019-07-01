@@ -1,5 +1,7 @@
 # Gopher-cutter
 
+[![CircleCI](https://circleci.com/gh/vlsidlyarevich/gopher-cutter/tree/master.svg?style=svg)](https://circleci.com/gh/vlsidlyarevich/gopher-cutter/tree/master)
+
 Simple link shortener with MongoDB persist and Base62 link shorting algorithm. 
 
 ## Api usage
