@@ -1,7 +1,6 @@
 package util
 
 import (
-	"github.com/vlsidlyarevich/gopher-cutter/internal"
 	"log"
 	. "math"
 	"strings"
@@ -20,7 +19,7 @@ func Encode(num int) (encStr string) {
 		num /= base
 	}
 
-	return internal.reverse(result)
+	return reverse(result)
 }
 
 func Decode(encStr string) (num int) {
