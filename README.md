@@ -6,7 +6,8 @@ Simple link shortener with MongoDB persist and Base62 link shorting algorithm.
 
 ## Api usage
 
-TODO
+* GET http://host:port/cut?url=testurl - Shorten link and get short version
+* GET http://host:port/shorturl - Proceed to full version of short link
 
 ## Getting Started
 
@@ -21,15 +22,16 @@ You need to install Golang to run this project.
 go version go1.12.1 darwin/amd64
 ```
 
+Also you need MongoDB instance. You should add your MongoDB installation url and database name to [config.toml](https://github.com/vlsidlyarevich/gopher-cutter/blob/master/configs/config.toml#L9-L10)
+
 ### Installing
 
-Clone the project and open in your favourite IDE.
-
-TODO
+* Clone the project and open in your favourite IDE.
+* Install all needed dependencies via `go get -d ./...` or via IDE tools.
 
 ## Running
 
-TODO
+Run [main.go](https://github.com/vlsidlyarevich/gopher-cutter/blob/master/cmd/gopher-cutter/main.go)
 
 ## Authors
 

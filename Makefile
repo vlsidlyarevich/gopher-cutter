@@ -1,6 +1,3 @@
-
-
-
 install: go-get go-build
 
 go-get:
